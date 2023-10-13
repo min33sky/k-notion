@@ -28,7 +28,7 @@ export default function UserItem() {
               <AvatarImage src={user?.imageUrl} />
             </Avatar>
             <span className="text-start font-medium line-clamp-1">
-              {user?.fullName}&apos;s Jotion
+              {user?.fullName}&apos;s K-notion
             </span>
           </div>
           <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
@@ -62,7 +62,7 @@ export default function UserItem() {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem
-          asChild
+          // asChild
           className="w-full cursor-pointer text-muted-foreground"
         >
           <SignOutButton>Log out</SignOutButton>
