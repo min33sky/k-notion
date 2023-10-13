@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { ChevronLeftIcon, ChevronsLeftIcon, MenuIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import React, { ElementRef, useEffect, useRef, useState } from 'react';
+import UserItem from './user-item';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -111,7 +112,7 @@ export default function Navigation() {
           <ChevronsLeftIcon className="h-6 w-6" />
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents</p>
