@@ -10,16 +10,16 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import React, { ElementRef, useEffect, useRef, useState } from 'react';
-import UserItem from './user-item';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
 import { toast } from 'sonner';
 import Item from './item';
+import { UserItem } from './user-item';
+import DocumentList from './document-list';
 
 export default function Navigation() {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
@@ -27,8 +27,6 @@ export default function Navigation() {
   const navbarRef = useRef<ElementRef<'div'>>(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
-
-  console.log('isMobile:  ', isMobile);
 
   useEffect(() => {
     if (isMobile) {
@@ -134,23 +132,25 @@ export default function Navigation() {
         >
           <ChevronsLeftIcon className="h-6 w-6" />
         </div>
+
         <div>
           <UserItem />
           <Item label="Search" icon={SearchIcon} isSearch onClick={() => {}} />
           <Item label="Settings" icon={SettingsIcon} onClick={() => {}} />
           <Item onClick={handleCreate} label="New page" icon={PlusCircleIcon} />
         </div>
+
         <div className="mt-4">
-          {documents?.map((document) => (
-            <p key={document._id}>{document.title}</p>
-          ))}
+          <DocumentList />
         </div>
+
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
           className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
         />
       </aside>
+
       <div
         ref={navbarRef}
         className={cn(

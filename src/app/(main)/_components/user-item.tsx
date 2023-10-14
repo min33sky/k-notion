@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export default function UserItem() {
+export const UserItem = () => {
   const { user } = useUser();
 
   return (
@@ -28,7 +28,7 @@ export default function UserItem() {
               <AvatarImage src={user?.imageUrl} />
             </Avatar>
             <span className="text-start font-medium line-clamp-1">
-              {user?.fullName}&apos;s K-notion
+              {user?.fullName}&apos;s Jotion
             </span>
           </div>
           <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
@@ -53,7 +53,7 @@ export default function UserItem() {
             </div>
             <div className="space-y-1">
               <p className="text-sm line-clamp-1">
-                {user?.fullName}&apos;s K-notion
+                {user?.fullName}&apos;s Jotion
               </p>
             </div>
           </div>
@@ -61,13 +61,10 @@ export default function UserItem() {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem
-          // asChild
-          className="w-full cursor-pointer text-muted-foreground"
-        >
+        <DropdownMenuItem className="w-full cursor-pointer text-muted-foreground">
           <SignOutButton>Log out</SignOutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};

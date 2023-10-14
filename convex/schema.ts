@@ -5,7 +5,7 @@ export default defineSchema({
   documents: defineTable({
     title: v.string(),
     userId: v.string(),
-    isArchived: v.boolean(),
+    isArchived: v.boolean(), //? true일 시 삭제된 문서
     parentDocument: v.optional(v.id('documents')),
     content: v.optional(v.string()),
     coverImage: v.optional(v.string()),

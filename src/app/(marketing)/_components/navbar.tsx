@@ -22,8 +22,10 @@ export default function Navbar() {
       )}
     >
       <Logo />
+
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
-        {isLoading ? <Spinner /> : null}
+        {isLoading && <Spinner />}
+
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
@@ -32,14 +34,15 @@ export default function Navbar() {
               </Button>
             </SignInButton>
             <SignInButton mode="modal">
-              <Button size="sm">Get Jotion free</Button>
+              <Button size="sm">Get K-notion free</Button>
             </SignInButton>
           </>
         )}
+
         {isAuthenticated && !isLoading && (
           <>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/documents">Enter Jotion</Link>
+              <Link href="/documents">Enter K-notion</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>
