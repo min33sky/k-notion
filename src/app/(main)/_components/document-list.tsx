@@ -24,7 +24,7 @@ export default function DocumentList({
   const router = useRouter();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
-  console.log('level: ', level);
+  // console.log('level: ', level);
 
   const onExpand = (documentId: string) => {
     setExpanded((prevExpanded) => ({
@@ -37,7 +37,7 @@ export default function DocumentList({
     parentDocument: parentDocumentId,
   });
 
-  console.log('documents: ', documents);
+  // console.log('documents: ', documents);
 
   const onRedirect = (documentId: string) => {
     router.push(`/documents/${documentId}`);
