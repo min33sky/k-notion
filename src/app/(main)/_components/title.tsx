@@ -24,7 +24,9 @@ export default function Title({ initialData }: TitleProps) {
     setTitle(initialData.title);
     setIsEditing(true);
     setTimeout(() => {
+      //? 커서 포커스
       inputRef.current?.focus();
+      //? 입력 문자 전체를 셀렉션 처리
       inputRef.current?.setSelectionRange(0, inputRef.current.value.length);
     }, 0);
   };
@@ -50,26 +52,29 @@ export default function Title({ initialData }: TitleProps) {
   return (
     <div className="flex items-center gap-x-1">
       {!!initialData.icon && <p>{initialData.icon}</p>}
-      {isEditing ? (
-        <Input
-          ref={inputRef}
-          onClick={enableInput}
-          onBlur={disableInput}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={title}
-          className="h-7 px-2 focus-visible:ring-transparent"
-        />
-      ) : (
-        <Button
-          onClick={enableInput}
-          variant="ghost"
-          size="sm"
-          className="font-normal h-auto p-1"
-        >
-          <span className="truncate">{initialData?.title}</span>
-        </Button>
-      )}
+      {
+        //? 제목 버튼을 누르면 수정 모드로 전환
+        isEditing ? (
+          <Input
+            ref={inputRef}
+            onClick={enableInput}
+            onBlur={disableInput}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={title}
+            className="h-7 px-2 focus-visible:ring-transparent"
+          />
+        ) : (
+          <Button
+            onClick={enableInput}
+            variant="ghost"
+            size="sm"
+            className="font-normal h-auto p-1"
+          >
+            <span className="truncate">{initialData?.title}</span>
+          </Button>
+        )
+      }
     </div>
   );
 }

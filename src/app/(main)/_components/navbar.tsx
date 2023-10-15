@@ -6,6 +6,8 @@ import { MenuIcon } from 'lucide-react';
 import { api } from '../../../../convex/_generated/api';
 import { Id } from '../../../../convex/_generated/dataModel';
 import Title from './title';
+import Menu from './menu';
+import Banner from './banner';
 
 interface NavbarProps {
   isCollapsed: boolean;
@@ -21,8 +23,11 @@ export default function Navbar({ isCollapsed, onResetWidth }: NavbarProps) {
 
   if (document === undefined) {
     return (
-      <nav className="bg-background dark:bg-[#1F1F1F] px-3 py-2 w-full flex items-center">
+      <nav className="bg-background dark:bg-[#1F1F1F] px-3 py-2 w-full flex items-center justify-between">
         <Title.Skeleton />
+        <div className="flex items-center gap-x-2">
+          <Menu.Skeleton />
+        </div>
       </nav>
     );
   }
@@ -41,10 +46,16 @@ export default function Navbar({ isCollapsed, onResetWidth }: NavbarProps) {
             className="h-6 w-6 text-muted-foreground"
           />
         )}
-        <div className="flex items-center justify-between wf-ull">
+        <div className="flex items-center justify-between w-full">
           <Title initialData={document} />
+          <div className="flex items-center gap-x-2">
+            <Menu documentId={document._id} />
+          </div>
         </div>
       </nav>
+
+      {/* 삭제된 문서일 경우 보여줄 배너 */}
+      {document.isArchived && <Banner documentId={document._id} />}
     </>
   );
 }
