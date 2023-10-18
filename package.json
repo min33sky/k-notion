@@ -36,7 +36,9 @@
     "@edgestore/react": "^0.1.4",
     "@edgestore/server": "^0.1.4",
     "react-dropzone": "^14.2.3",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "@blocknote/core": "^0.9.4",
+    "@blocknote/react": "^0.9.4"
   },
   "devDependencies": {
     "@types/node": "^20",

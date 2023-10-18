@@ -10,7 +10,7 @@ import {
   SettingsIcon,
   TrashIcon,
 } from 'lucide-react';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import React, { ElementRef, useEffect, useRef, useState } from 'react';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
@@ -30,6 +30,7 @@ import Navbar from './navbar';
 
 export default function Navigation() {
   const search = useSearch();
+  const router = useRouter();
   const params = useParams();
   const settings = useSettings();
   const pathname = usePathname();
@@ -117,7 +118,9 @@ export default function Navigation() {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: 'Untitled' });
+    const promise = create({ title: 'Untitled' }).then((documentId) =>
+      router.push(`/documents/${documentId}`),
+    );
 
     toast.promise(promise, {
       loading: 'Creating a new note...',
