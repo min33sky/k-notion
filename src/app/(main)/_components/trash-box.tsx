@@ -9,6 +9,9 @@ import { SearchIcon, TrashIcon, UndoIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import ConfirmModal from '@/components/modals/confirm-modal';
 
+/**
+ * 임시 삭제된 (archive) 문서들을 보여주는 컴포넌트
+ */
 export default function TrashBox() {
   const router = useRouter();
   const params = useParams();
@@ -22,10 +25,19 @@ export default function TrashBox() {
     return document.title.toLowerCase().includes(search.toLowerCase());
   });
 
+  /**
+   * 삭제된 문서로 이동
+   * @param documentId 삭제된 문서 아이디
+   */
   const onClick = (documentId: string) => {
     router.push(`/documents/${documentId}`);
   };
 
+  /**
+   * 삭제된 문서를 복구시킨다
+   * @param event
+   * @param documentId
+   */
   const onRestore = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     documentId: Id<'documents'>,
@@ -40,6 +52,10 @@ export default function TrashBox() {
     });
   };
 
+  /**
+   * 문서 영구 삭제
+   * @param documentId
+   */
   const onRemove = (documentId: Id<'documents'>) => {
     const promise = remove({ id: documentId });
 

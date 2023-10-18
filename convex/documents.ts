@@ -203,7 +203,7 @@ export const restore = mutation({
 });
 
 /**
- * 문서 완전 삭제
+ * 문서 영구 삭제
  */
 export const remove = mutation({
   args: { id: v.id('documents') },

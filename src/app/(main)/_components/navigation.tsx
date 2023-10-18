@@ -155,25 +155,27 @@ export default function Navigation() {
         <div>
           <UserItem />
           <Item
-            label="Search"
+            label="검색"
             icon={SearchIcon}
             isSearch
             onClick={search.onOpen}
           />
+          <Item label="설정" icon={SettingsIcon} onClick={settings.onOpen} />
           <Item
-            label="Settings"
-            icon={SettingsIcon}
-            onClick={settings.onOpen}
+            onClick={handleCreate}
+            label="새 페이지"
+            icon={PlusCircleIcon}
           />
-          <Item onClick={handleCreate} label="New page" icon={PlusCircleIcon} />
         </div>
 
         <div className="mt-4">
           <DocumentList />
-          <Item onClick={handleCreate} icon={PlusIcon} label="Add a page" />
+
+          <Item onClick={handleCreate} icon={PlusIcon} label="페이지 추가" />
+
           <Popover>
             <PopoverTrigger className="w-full mt-4">
-              <Item label="Trash" icon={TrashIcon} />
+              <Item label="휴지통" icon={TrashIcon} />
             </PopoverTrigger>
             <PopoverContent
               className="p-0 w-72"

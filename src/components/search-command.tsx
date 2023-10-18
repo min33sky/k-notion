@@ -33,15 +33,15 @@ export default function SearchCommand() {
 
   // Hotkey 설정
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
+    const keyDown = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         toggle();
       }
     };
 
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
+    document.addEventListener('keydown', keyDown);
+    return () => document.removeEventListener('keydown', keyDown);
   }, [toggle]);
 
   const onSelect = (id: string) => {
@@ -64,7 +64,7 @@ export default function SearchCommand() {
               key={document._id}
               value={`${document._id}-${document.title}`}
               title={document.title}
-              onSelect={onSelect}
+              onSelect={() => onSelect(document._id)}
             >
               {document.icon ? (
                 <p className="mr-2 text-[18px]">{document.icon}</p>

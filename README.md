@@ -1,5 +1,15 @@
 # K-notion
 
+> Korean Notion
+
+## Stack
+
+- React
+- Next.js
+- Tailwindcss
+- Convex
+- Typescript
+
 ## Getting started
 
 1. Install dependencies
